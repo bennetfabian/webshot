@@ -6,7 +6,7 @@ import { getInt, getUrlFromPath, isValidUrl } from './lib/validator'
 export default async function (req, res) {
   try {
     const { pathname = '/', query = {} } = parse(req.url, true)
-    const { type = 'png', quality, fullPage, height = 1920, width = 1080, delay = 0 } = query
+    const { type = 'png', quality, fullPage, height = 1920, width = 1080, delay = 0, darkMode } = query
 
     const url = getUrlFromPath(pathname)
 
@@ -23,6 +23,7 @@ export default async function (req, res) {
         getInt(height),
         getInt(width),
         getInt(delay),
+        Boolean(darkMode)
       )
       res.statusCode = 200
       res.setHeader('Content-Type', `image/${type}`)

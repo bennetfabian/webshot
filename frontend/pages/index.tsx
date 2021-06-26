@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import Head from 'next/head'
-import GithubCorner from 'react-github-corner'
 
 function PreviewCard({ src }) {
   return <div className="preview-card">{src && <img src={src} alt="Preview card" />}</div>
@@ -23,17 +22,17 @@ function Metatags() {
 
       {/** Open Graph / Facebook **/}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://webshot.deam.io/" />
+      <meta property="og:url" content="http://localhost:3000/" />
       <meta property="og:title" content="Webshot" />
       <meta property="og:description" content="Screenshot websites as a Service" />
-      <meta property="og:image" content="https://webshot.deam.io/https:/webshot.deam.io/?height=630&width=1200" />
+      <meta property="og:image" content="http://localhost:3000/http:/localhost:3000/?height=630&width=1200" />
 
       {/** Twitter  **/}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://webshot.deam.io" />
+      <meta property="twitter:url" content="http://localhost:3000" />
       <meta property="twitter:title" content="Webshot" />
       <meta property="twitter:description" content="Screenshot websites as a Service" />
-      <meta property="twitter:image" content="https://webshot.deam.io/https:/webshot.deam.io/?height=630&width=1200" />
+      <meta property="twitter:image" content="http://localhost:3000/http:/localhost:3000/?height=630&width=1200" />
 
       {/** Google Analytics  **/}
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70354592-4"></script>
@@ -87,13 +86,15 @@ export default function App() {
 
   if (website) {
     if (option === 0) {
-      link = 'https://webshot.deam.io/' + website
+      link = 'http://localhost:1234/' + website
     } else if (option === 1) {
-      link = 'https://webshot.deam.io/' + website + '?fullPage=true'
+      link = 'http://localhost:1234/' + website + '?fullPage=true'
     } else if (option === 2) {
-      link = 'https://webshot.deam.io/' + website + '?width=1280&height=720'
+      link = 'http://localhost:1234/' + website + '?width=1280&height=720'
     } else if (option === 3) {
-      link = 'https://webshot.deam.io/' + website + '?delay=2000'
+      link = 'http://localhost:1234/' + website + '?delay=2000'
+    } else if (option === 4) {
+      link = 'http://localhost:1234/' + website + '?darkMode=true'
     }
   }
 
@@ -101,7 +102,6 @@ export default function App() {
     <div className="container">
       <div className="wrapper">
         <Metatags />
-        <GithubCorner href="https://github.com/deamme/webshot/" />
         <h1 className="brand">Webshot</h1>
         <h2 className="description">Screenshot websites as a Service</h2>
         <p>
@@ -129,6 +129,9 @@ export default function App() {
           </button>
           <button className={option === 3 ? 'active' : ''} onClick={() => setOption(3)}>
             Delay
+          </button>
+          <button className={option === 4 ? 'active' : ''} onClick={() => setOption(4)}>
+            Dark mode
           </button>
         </div>
         {link && (
